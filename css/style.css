@@ -1,46 +1,63 @@
+/* ===================================================
+   EVERBLOOM
+   STYLE.CSS
+   PART 1
+=================================================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,
-body{
+:root{
 
-    width:100%;
-    height:100%;
+    --white:#ffffff;
+    --lavender:#f7f2ff;
+    --lavender-dark:#b894f4;
+    --blue:#edf7ff;
+    --text:#565656;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
 
 }
 
 body{
 
+    width:100%;
+    height:100vh;
+
     overflow:hidden;
 
-    font-family:'Poppins',sans-serif;
+    position:relative;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    position:relative;
+    font-family:'Poppins',sans-serif;
 
     background:
     linear-gradient(
         135deg,
-        #ffffff,
-        #f6f2ff,
-        #eef7ff
+        #ffffff 0%,
+        #f8f4ff 55%,
+        #eef8ff 100%
     );
 
     transition:
-    opacity .5s ease,
-    transform .5s ease;
+    opacity .6s ease,
+    transform .6s ease;
 
 }
 
-/* =========================
-      LOADER
-========================= */
+/* =====================================
+      LOADING SCREEN
+===================================== */
 
 #loader{
 
@@ -78,15 +95,15 @@ body{
 
 .loader-content img{
 
-    width:120px;
+    width:110px;
 
-    animation:float 2.5s ease-in-out infinite;
+    animation:loaderFloat 2.5s ease-in-out infinite;
 
 }
 
 .loader-content h2{
 
-    margin-top:15px;
+    margin-top:18px;
 
     font-family:'Cormorant Garamond',serif;
 
@@ -100,13 +117,15 @@ body{
 
     margin-top:10px;
 
-    color:#888;
+    color:#999;
+
+    font-size:15px;
 
 }
 
-/* =========================
+/* =====================================
       BACKGROUND
-========================= */
+===================================== */
 
 .background{
 
@@ -114,15 +133,19 @@ body{
 
     inset:0;
 
+    z-index:-5;
+
     background:
 
-    radial-gradient(circle at top left,#e8ddff 0%,transparent 35%),
+    radial-gradient(circle at top left,
+    rgba(211,190,255,.55),
+    transparent 35%),
 
-    radial-gradient(circle at bottom right,#d8ecff 0%,transparent 35%);
+    radial-gradient(circle at bottom right,
+    rgba(188,223,255,.45),
+    transparent 35%);
 
-    filter:blur(60px);
-
-    opacity:.8;
+    filter:blur(70px);
 
 }
 
@@ -134,17 +157,19 @@ body{
 
     filter:blur(120px);
 
+    opacity:.5;
+
 }
 
 .glow1{
 
-    width:340px;
-    height:340px;
+    width:350px;
+    height:350px;
 
-    background:#d4c0ff;
+    background:#d5c4ff;
 
-    left:-90px;
-    top:-90px;
+    top:-100px;
+    left:-100px;
 
 }
 
@@ -155,22 +180,22 @@ body{
 
     background:#d5ebff;
 
-    right:-90px;
-    bottom:-90px;
+    right:-120px;
+    bottom:-120px;
 
 }
 
-/* =========================
-        HERO
-========================= */
+/* =====================================
+      HERO
+===================================== */
 
 .hero{
 
-    z-index:10;
-
     text-align:center;
 
-    animation:fadeIn 1.5s ease;
+    z-index:10;
+
+    animation:heroFade 1.5s ease;
 
 }
 
@@ -182,15 +207,15 @@ body{
 
     line-height:1.1;
 
-    color:#555;
+    color:var(--text);
 
-    margin-bottom:70px;
+    margin-bottom:65px;
 
 }
 
-/* =========================
-        BUTTONS
-========================= */
+/* =====================================
+      BUTTONS
+===================================== */
 
 .buttons{
 
@@ -198,9 +223,9 @@ body{
 
     flex-direction:column;
 
-    align-items:center;
-
     gap:22px;
+
+    align-items:center;
 
     position:relative;
 
@@ -216,21 +241,23 @@ button{
 
     border-radius:50px;
 
-    cursor:pointer;
-
     font-size:18px;
+
+    cursor:pointer;
 
     transition:.35s;
 
+    font-family:'Poppins',sans-serif;
+
     box-shadow:
 
-    0 18px 35px rgba(0,0,0,.08);
+    0 15px 35px rgba(0,0,0,.08);
 
 }
 
 #yes{
 
-    background:#b89af6;
+    background:#b894f4;
 
     color:white;
 
@@ -240,53 +267,85 @@ button{
 
     transform:translateY(-4px);
 
-}
+    box-shadow:
 
-/* IMPORTANT */
+    0 22px 45px rgba(184,148,244,.35);
+
+}
 
 #no{
 
     background:white;
 
-    color:#555;
-
-   
+    color:#666;
 
 }
 
-/* =========================
+/* =====================================
       FOOTER
-========================= */
+===================================== */
 
 .footer{
 
     margin-top:55px;
 
-    color:#888;
+    color:#999;
 
     font-size:14px;
 
 }
+/* =====================================
+      PETALS
+===================================== */
 
-/* =========================
-      ANIMATIONS
-========================= */
+#petals{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:2;
+
+}
+
+.petal{
+
+    position:absolute;
+
+    top:-40px;
+
+    animation:fall linear forwards;
+
+}
+
+/* =====================================
+      PAGE TRANSITION
+===================================== */
 
 body.fade-out{
 
     opacity:0;
 
-    transform:scale(.98);
+    transform:scale(.97);
 
 }
 
-@keyframes fadeIn{
+/* =====================================
+      ANIMATIONS
+===================================== */
+
+@keyframes heroFade{
 
     from{
 
         opacity:0;
 
-        transform:translateY(40px);
+        transform:
+        translateY(50px);
 
     }
 
@@ -294,57 +353,113 @@ body.fade-out{
 
         opacity:1;
 
-        transform:translateY(0);
+        transform:
+        translateY(0);
 
     }
 
 }
 
-@keyframes float{
+@keyframes loaderFloat{
 
     0%{
 
-        transform:translateY(0);
+        transform:
+        translateY(0);
 
     }
 
     50%{
 
-        transform:translateY(-10px);
+        transform:
+        translateY(-12px);
 
     }
 
     100%{
 
-        transform:translateY(0);
+        transform:
+        translateY(0);
 
     }
 
 }
 
-/* =========================
-      MOBILE
-========================= */
+@keyframes fall{
 
-@media(max-width:768px){
+    0%{
+
+        transform:
+        translateY(-60px)
+        rotate(0deg);
+
+    }
+
+    100%{
+
+        transform:
+        translateY(110vh)
+        rotate(360deg);
+
+    }
+
+}
+
+/* =====================================
+      BUTTON EFFECTS
+===================================== */
+
+button:active{
+
+    transform:scale(.97);
+
+}
+
+button:focus{
+
+    outline:none;
+
+}
+
+/* =====================================
+      SCROLLBAR
+===================================== */
+
+::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+/* =====================================
+      MOBILE
+===================================== */
+
+@media(max-width:900px){
 
 .hero h1{
 
-font-size:3.2rem;
+font-size:3.8rem;
+
+margin-bottom:50px;
 
 padding:0 20px;
-
-margin-bottom:45px;
 
 }
 
 button{
 
-width:240px;
+width:250px;
 
-height:54px;
+height:56px;
 
-font-size:16px;
+font-size:17px;
+
+}
+
+.footer{
+
+padding:0 20px;
 
 }
 
@@ -356,13 +471,83 @@ width:90px;
 
 .loader-content h2{
 
-font-size:32px;
+font-size:34px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.hero{
+
+padding:20px;
+
+}
+
+.hero h1{
+
+font-size:2.8rem;
+
+line-height:1.2;
+
+margin-bottom:40px;
+
+}
+
+.buttons{
+
+gap:18px;
+
+}
+
+button{
+
+width:220px;
+
+height:52px;
+
+font-size:15px;
+
+}
+
+.loader-content img{
+
+width:75px;
+
+}
+
+.loader-content h2{
+
+font-size:28px;
+
+}
+
+.loader-content p{
+
+font-size:14px;
 
 }
 
 .footer{
 
-padding:0 20px;
+font-size:12px;
+
+margin-top:40px;
+
+}
+
+.glow1{
+
+width:240px;
+height:240px;
+
+}
+
+.glow2{
+
+width:260px;
+height:260px;
 
 }
 
