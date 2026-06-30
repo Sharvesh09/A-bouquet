@@ -1,29 +1,137 @@
-<div class="bouquet-section">
+<!DOCTYPE html>
+<html lang="en">
 
-    <img
-        src="assets/bouquet.png"
-        alt="Bouquet"
-        id="bouquetImage">
+<head>
 
-</div>
+    <meta charset="UTF-8">
 
-<button id="letterBtn">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-     <h1>For You 🌸</h1>
+    <title>EverBloom • Bouquet</title>
 
-<div class="letterContent">
+    <!-- Google Fonts -->
 
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-    <p>
-        A bouquet that never smells,
-        never spoils,
-        and stays in your hands forever.
-    </p>
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
-    <p class="signature">
-        — Sharvesh
-    </p>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
-</div>
+    <link rel="stylesheet"
+        href="css/bouquet.css">
 
-</button>
+</head>
+
+<body>
+
+    <!-- Background -->
+
+    <div class="background"></div>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <!-- Sparkles -->
+
+    <div class="sparkles">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <!-- Floating Petals -->
+
+    <div id="petals"></div>
+
+    <!-- Bouquet -->
+
+    <main class="hero">
+
+        <div class="bouquetContainer">
+
+            <img
+                src="assets/bouquet.png"
+                alt="Bouquet"
+                id="bouquet">
+
+        </div>
+
+        <button id="letterBtn">
+
+            💌 Read My Letter
+
+        </button>
+
+    </main>
+
+    <!-- Letter -->
+
+    <div id="overlay">
+
+        <div id="letter">
+
+            <button id="close">
+
+                ✕
+
+            </button>
+
+            <h1>
+
+                For You 🌸
+
+            </h1>
+
+            <div class="content">
+
+                <p>
+
+                    Flowers are meant to be admired,
+
+                    but they eventually fade.
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    So here's a bouquet
+
+                    that never smells,
+
+                    never spoils,
+
+                    and stays in your hands forever.
+
+                </p>
+
+                <br><br>
+
+                <h2>
+
+                    — Sharvesh 
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/bouquet.js"></script>
+
+</body>
+
+</html>
