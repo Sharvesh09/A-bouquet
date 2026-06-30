@@ -1,16 +1,16 @@
-/* ===================================
+/* ==========================================
    EVERBLOOM
-=================================== */
+   bouquet.js
+========================================== */
 
 const letterBtn = document.getElementById("letterBtn");
 const overlay = document.getElementById("overlay");
 const closeBtn = document.getElementById("close");
-const bouquet = document.getElementById("bouquet");
-const petalContainer = document.getElementById("petals");
+const petals = document.getElementById("petals");
 
-/* ===========================
-      LETTER
-=========================== */
+/* ==========================
+      LETTER POPUP
+========================== */
 
 letterBtn.addEventListener("click", () => {
 
@@ -34,24 +34,23 @@ overlay.addEventListener("click", (e) => {
 
 });
 
-/* ===========================
-      PARALLAX
-=========================== */
+/* ==========================
+      ESC KEY CLOSE
+========================== */
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener("keydown", (e) => {
 
-    const x = (e.clientX / window.innerWidth - 0.5) * 15;
+    if (e.key === "Escape") {
 
-    const y = (e.clientY / window.innerHeight - 0.5) * 15;
+        overlay.classList.remove("show");
 
-    bouquet.style.transform =
-        `translate(${x}px, ${y}px)`;
+    }
 
 });
 
-/* ===========================
-      PETALS
-=========================== */
+/* ==========================
+      FLOATING PETALS
+========================== */
 
 function createPetal() {
 
@@ -64,64 +63,61 @@ function createPetal() {
     petal.style.left = Math.random() * 100 + "vw";
 
     petal.style.fontSize =
-        12 + Math.random() * 12 + "px";
-
-    petal.style.animationDuration =
-        8 + Math.random() * 8 + "s";
+        (14 + Math.random() * 12) + "px";
 
     petal.style.opacity =
-        0.2 + Math.random() * 0.8;
+        0.25 + Math.random() * 0.6;
 
-    petal.style.position = "fixed";
+    petal.style.animation =
+        `fall ${8 + Math.random() * 5}s linear forwards`;
 
-    petal.style.top = "-30px";
-
-    petal.style.pointerEvents = "none";
-
-    petal.style.zIndex = "5";
-
-    petal.style.animation = "fall linear forwards";
-
-    petalContainer.appendChild(petal);
+    petals.appendChild(petal);
 
     setTimeout(() => {
 
         petal.remove();
 
-    }, 16000);
+    }, 13000);
 
 }
 
-setInterval(createPetal, 800);
+setInterval(createPetal, 700);
 
-/* ===========================
-      FALL KEYFRAMES
-=========================== */
+/* ==========================
+      PARALLAX EFFECT
+========================== */
 
-const style = document.createElement("style");
+const bouquet = document.getElementById("bouquet");
 
-style.innerHTML = `
+document.addEventListener("mousemove", (e) => {
 
-@keyframes fall{
+    const x =
+        (e.clientX / window.innerWidth - 0.5) * 12;
 
-0%{
+    const y =
+        (e.clientY / window.innerHeight - 0.5) * 12;
 
-transform:
-translateY(-50px)
-rotate(0deg);
+    bouquet.style.transform =
+        `translate(${x}px, ${y}px)`;
 
-}
+});
 
-100%{
+/* ==========================
+      MOBILE TOUCH
+========================== */
 
-transform:
-translateY(110vh)
-rotate(360deg);
+document.addEventListener("touchmove", () => {
 
-}
+    bouquet.style.transform = "translate(0px,0px)";
 
-}
+});
 
-`;
+/* ==========================
+      PREVENT IMAGE DRAG
+========================== */
 
-document.head.appendChild(style);
+bouquet.addEventListener("dragstart", (e) => {
+
+    e.preventDefault();
+
+});
