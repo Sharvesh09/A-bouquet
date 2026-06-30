@@ -1,6 +1,6 @@
-/* ==========================
-   EVERBLOOM - BOUQUET PAGE
-========================== */
+/* ===============================
+        EVERBLOOM BOUQUET
+================================ */
 
 *{
     margin:0;
@@ -11,67 +11,66 @@
 :root{
 
     --white:#ffffff;
-    --lavender:#b89af6;
-    --lavender-light:#ece4ff;
-    --blue:#dfeeff;
-    --text:#4a4a4a;
+    --lavender:#e9dcff;
+    --blue:#edf6ff;
+    --text:#555;
 
 }
 
 body{
 
-    font-family:'Poppins',sans-serif;
-
-    width:100%;
-    height:100vh;
+    font-family:"Poppins",sans-serif;
 
     overflow:hidden;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    height:100vh;
 
-    position:relative;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     background:
     linear-gradient(
         135deg,
-        #ffffff 0%,
-        #f7f3ff 45%,
-        #edf5ff 100%
+        #ffffff,
+        #f7f3ff,
+        #eef7ff
     );
 
 }
 
-/* ==========================
-   Background Glow
-========================== */
+/* Background */
 
 .background{
 
-    position:absolute;
+    position:fixed;
 
     inset:0;
+
+    z-index:-3;
 
     background:
 
     radial-gradient(circle at top left,
-    rgba(198,177,255,.35),
-    transparent 40%),
+    rgba(219,198,255,.45),
+    transparent 35%),
 
     radial-gradient(circle at bottom right,
-    rgba(182,223,255,.40),
+    rgba(180,225,255,.35),
     transparent 40%);
 
-    filter:blur(70px);
-
-    z-index:-3;
+    filter:blur(80px);
 
 }
 
 .glow{
 
     position:absolute;
+
+    width:350px;
+    height:350px;
 
     border-radius:50%;
 
@@ -83,154 +82,269 @@ body{
 
 .glow-left{
 
-    width:320px;
-    height:320px;
-
-    background:#d7c7ff;
+    background:#dccdff;
 
     left:-80px;
-    top:-60px;
+    top:-80px;
 
 }
 
 .glow-right{
 
-    width:350px;
-    height:350px;
-
-    background:#d7ecff;
+    background:#d8edff;
 
     right:-100px;
-    bottom:-90px;
+    bottom:-100px;
 
 }
 
-/* ==========================
-      Main Container
-========================== */
+/* Main */
 
 .container{
-
-    width:100%;
 
     display:flex;
 
     flex-direction:column;
 
-    align-items:center;
-
     justify-content:center;
+
+    align-items:center;
 
 }
 
-/* ==========================
-      Bouquet
-========================== */
+/* Bouquet */
 
 .bouquet-section{
 
-    animation:bloom 1.8s ease forwards;
+    animation:bloom 1.5s ease;
 
 }
 
-.bouquet-placeholder{
+.bouquet{
+
+    position:relative;
+
+    width:560px;
+
+    height:720px;
+
+}
+
+/* ===============================
+        FLOWERS
+================================ */
+
+.flower{
+
+    position:absolute;
+
+    user-select:none;
+
+    pointer-events:none;
+
+    transition:.35s;
+
+}
+
+.flower:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* Lily */
+
+.lily{
+
+    width:170px;
+
+    left:190px;
+
+    top:10px;
+
+    z-index:10;
+
+}
+
+/* Tulips */
+
+.tulip1{
+
+    width:145px;
+
+    left:80px;
+
+    top:120px;
+
+    z-index:8;
+
+}
+
+.tulip2{
+
+    width:145px;
+
+    right:80px;
+
+    top:120px;
+
+    transform:scaleX(-1);
+
+    z-index:8;
+
+}
+
+/* Lavender */
+
+.lavender{
+
+    width:120px;
+
+    left:120px;
+
+    top:240px;
+
+    z-index:7;
+
+}
+
+/* Hydrangea */
+
+.hydra{
+
+    width:165px;
+
+    right:80px;
+
+    top:220px;
+
+    z-index:7;
+
+}
+
+/* Baby Breath */
+
+.babybreath{
+
+    width:180px;
+
+    left:165px;
+
+    top:250px;
+
+    z-index:6;
+
+}
+
+/* Rose */
+
+.rose{
+
+    width:120px;
+
+    right:155px;
+
+    top:320px;
+
+    z-index:7;
+
+}
+
+/* Daisy */
+
+.daisy{
+
+    width:100px;
+
+    left:215px;
+
+    top:340px;
+
+    z-index:9;
+
+}
+
+/* ===============================
+        WRAPPER
+================================ */
+
+.wrapper{
+
+    position:absolute;
 
     width:340px;
 
-    height:420px;
+    left:110px;
 
-    border-radius:35px;
+    bottom:45px;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:140px;
-
-    background:rgba(255,255,255,.28);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.55);
-
-    box-shadow:
-
-    0 25px 60px rgba(0,0,0,.08);
-
-    transition:.4s;
+    z-index:20;
 
 }
 
-.bouquet-placeholder:hover{
+/* ===============================
+        RIBBON
+================================ */
 
-    transform:
+.ribbon{
 
-    translateY(-8px)
-    scale(1.02);
+    position:absolute;
+
+    width:120px;
+
+    left:220px;
+
+    bottom:55px;
+
+    z-index:21;
 
 }
 
-/* ==========================
-      Button
-========================== */
+/* Button */
 
 #customizeBtn{
 
-    margin-top:45px;
+    margin-top:35px;
 
-    width:270px;
+    width:250px;
 
-    height:58px;
+    height:55px;
 
     border:none;
 
     border-radius:40px;
 
-    background:#b89af6;
+    background:#b897ff;
 
     color:white;
 
-    font-size:17px;
-
-    font-weight:500;
+    font-size:16px;
 
     cursor:pointer;
 
-    transition:.35s;
+    transition:.3s;
 
-    box-shadow:
-
-    0 18px 35px rgba(184,154,246,.30);
+    box-shadow:0 15px 35px rgba(180,145,255,.35);
 
 }
 
 #customizeBtn:hover{
 
-    transform:
-
-    translateY(-4px);
-
-    box-shadow:
-
-    0 22px 45px rgba(184,154,246,.40);
+    transform:translateY(-4px);
 
 }
 
-/* ==========================
-      Petals
-========================== */
+/* Petals */
 
 #petals{
 
-    position:absolute;
+    position:fixed;
 
     inset:0;
 
-    overflow:hidden;
-
     pointer-events:none;
+
+    overflow:hidden;
 
 }
 
@@ -238,19 +352,11 @@ body{
 
     position:absolute;
 
-    top:-40px;
-
-    color:#d7a8ff;
-
-    font-size:18px;
-
     animation:fall linear infinite;
 
 }
 
-/* ==========================
-      Animations
-========================== */
+/* Animation */
 
 @keyframes bloom{
 
@@ -259,7 +365,6 @@ body{
         opacity:0;
 
         transform:
-
         translateY(60px)
         scale(.85);
 
@@ -270,7 +375,6 @@ body{
         opacity:1;
 
         transform:
-
         translateY(0)
         scale(1);
 
@@ -283,8 +387,7 @@ body{
     from{
 
         transform:
-
-        translateY(-80px)
+        translateY(-100px)
         rotate(0deg);
 
     }
@@ -292,7 +395,6 @@ body{
     to{
 
         transform:
-
         translateY(120vh)
         rotate(360deg);
 
@@ -300,24 +402,84 @@ body{
 
 }
 
-/* ==========================
-      Mobile
-========================== */
+/* Responsive */
 
 @media(max-width:768px){
 
-.bouquet-placeholder{
+.bouquet{
 
-width:260px;
-height:330px;
-
-font-size:110px;
+width:360px;
+height:560px;
 
 }
 
-#customizeBtn{
+.lily{
 
-width:220px;
+width:110px;
+left:125px;
+
+}
+
+.tulip1{
+
+width:100px;
+left:30px;
+
+}
+
+.tulip2{
+
+width:100px;
+right:30px;
+
+}
+
+.lavender{
+
+width:85px;
+left:60px;
+
+}
+
+.hydra{
+
+width:110px;
+right:30px;
+
+}
+
+.babybreath{
+
+width:120px;
+left:110px;
+
+}
+
+.rose{
+
+width:90px;
+right:95px;
+
+}
+
+.daisy{
+
+width:70px;
+left:150px;
+
+}
+
+.wrapper{
+
+width:240px;
+left:60px;
+
+}
+
+.ribbon{
+
+width:90px;
+left:135px;
 
 }
 
