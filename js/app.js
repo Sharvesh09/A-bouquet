@@ -116,3 +116,16 @@ function createPetal() {
 }
 
 setInterval(createPetal, 700);
+/* ==========================
+      HANDLE BACK BUTTON
+========================== */
+
+window.addEventListener("pageshow", function (event) {
+
+    if (event.persisted) {
+
+        window.location.reload();
+
+    }
+
+});
