@@ -192,3 +192,52 @@ transform:translateY(0);
 }
 
 }
+/* Smooth page transition */
+
+body{
+
+    transition:
+    opacity .5s ease,
+    transform .5s ease;
+
+}
+
+body.fade-out{
+
+    opacity:0;
+
+    transform:scale(.98);
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:3rem;
+
+margin-bottom:50px;
+
+padding:0 20px;
+
+}
+
+.buttons{
+
+width:100%;
+
+}
+
+button{
+
+width:240px;
+
+height:55px;
+
+font-size:16px;
+
+}
+
+}
