@@ -1,17 +1,16 @@
-/* ===========================================
-   EVERBLOOM - LANDING PAGE
-=========================================== */
+/* ==========================================
+   EVERBLOOM
+   app.js
+========================================== */
 
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 const loader = document.getElementById("loader");
 const petals = document.getElementById("petals");
 
-let moveCount = 0;
-
-/* ===========================
+/* ==========================
         LOADER
-=========================== */
+========================== */
 
 window.addEventListener("load", () => {
 
@@ -19,18 +18,26 @@ window.addEventListener("load", () => {
 
         loader.classList.add("hide");
 
-    }, 1500);
+    }, 1200);
 
 });
 
-/* ===========================
-      ESCAPING NO BUTTON
-=========================== */
+/* ==========================
+    NO BUTTON
+========================== */
+
+let firstMove = false;
+
 function moveNoButton() {
 
-    noBtn.style.position = "fixed";
+    if (!firstMove) {
 
-    const padding = 20;
+        noBtn.style.position = "fixed";
+        firstMove = true;
+
+    }
+
+    const padding = 30;
 
     const maxX = window.innerWidth - noBtn.offsetWidth - padding;
     const maxY = window.innerHeight - noBtn.offsetHeight - padding;
@@ -38,24 +45,32 @@ function moveNoButton() {
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-
-    moveCount++;
-
-    if (moveCount === 5) {
-        noBtn.textContent = "Are you sure? 🤍";
-    }
-
-    if (moveCount === 10) {
-        noBtn.textContent = "Please? 🌸";
-    }
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
 
 }
 
-/* ===========================
-      OPEN BOUQUET
-=========================== */
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+noBtn.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    moveNoButton();
+
+});
+
+noBtn.addEventListener("touchstart", (e) => {
+
+    e.preventDefault();
+
+    moveNoButton();
+
+});
+
+/* ==========================
+      YES BUTTON
+========================== */
 
 yesBtn.addEventListener("click", () => {
 
@@ -69,30 +84,26 @@ yesBtn.addEventListener("click", () => {
 
 });
 
-/* ===========================
-      FLOATING PETALS
-=========================== */
+/* ==========================
+      PETALS
+========================== */
 
 function createPetal() {
 
     const petal = document.createElement("div");
 
-    petal.innerHTML = "🌸";
+    petal.classList.add("petal");
 
-    petal.style.position = "absolute";
+    petal.innerHTML = "🌸";
 
     petal.style.left = Math.random() * 100 + "vw";
 
-    petal.style.top = "-40px";
+    petal.style.fontSize = (14 + Math.random() * 10) + "px";
 
-    petal.style.fontSize = (14 + Math.random() * 12) + "px";
+    petal.style.opacity = 0.3 + Math.random() * 0.5;
 
-    petal.style.opacity = 0.3 + Math.random() * 0.6;
-
-    petal.style.pointerEvents = "none";
-
-    petal.style.animation =
-        `fall ${8 + Math.random() * 5}s linear forwards`;
+    petal.style.animationDuration =
+        (8 + Math.random() * 6) + "s";
 
     petals.appendChild(petal);
 
@@ -100,38 +111,8 @@ function createPetal() {
 
         petal.remove();
 
-    }, 13000);
+    }, 14000);
 
 }
 
-setInterval(createPetal, 800);
-
-/* ===========================
-      PETAL ANIMATION
-=========================== */
-
-const style = document.createElement("style");
-
-style.innerHTML = `
-@keyframes fall{
-
-0%{
-
-transform:
-translateY(-50px)
-rotate(0deg);
-
-}
-
-100%{
-
-transform:
-translateY(110vh)
-rotate(360deg);
-
-}
-
-}
-`;
-
-document.head.appendChild(style);
+setInterval(createPetal, 700);
