@@ -4,67 +4,103 @@
 <head>
 
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>A Bouquet That Never Wilts 🌸</title>
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/bouquet.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
           href="https://fonts.gstatic.com"
           crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet"
-          href="css/style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<div class="background"></div>
+    <!-- ==========================
+            LOADING SCREEN
+    =========================== -->
 
-<div class="glow glow1"></div>
-<div class="glow glow2"></div>
+    <div id="loader">
 
-<div id="petals"></div>
+        <div class="loader-content">
 
-<section class="hero">
+            <img src="assets/bouquet.png"
+                 alt="Bouquet">
 
-<h1>
+            <h2>EverBloom</h2>
 
-A Bouquet
+            <p>Preparing your bouquet...</p>
 
-<br>
+        </div>
 
-That Never Wilts 🌸
+    </div>
 
-</h1>
+    <!-- ==========================
+            BACKGROUND
+    =========================== -->
 
-<div class="buttons">
+    <div class="background"></div>
 
-<button id="yes">
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
 
-Open My Bouquet
+    <!-- Floating Petals -->
+    <div id="petals"></div>
 
-</button>
+    <!-- ==========================
+            HERO
+    =========================== -->
 
-<button id="no">
+    <section class="hero">
 
-No
+        <h1>
 
-</button>
+            A Bouquet
 
-</div>
+            <br>
 
-</section>
+            That Never Wilts 🌸
 
-<script src="js/app.js"></script>
+        </h1>
+
+        <div class="buttons">
+
+            <button id="yes">
+
+                Open My Bouquet
+
+            </button>
+
+            <button id="no">
+
+                No
+
+            </button>
+
+        </div>
+
+        <p class="footer">
+
+            EverBloom • Made with 🤍 by Sharvesh
+
+        </p>
+
+    </section>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
 
 </body>
 
