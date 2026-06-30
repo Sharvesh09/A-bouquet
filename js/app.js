@@ -1,22 +1,34 @@
+/* ===========================================
+   EVERBLOOM - LANDING PAGE
+=========================================== */
+
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
+const loader = document.getElementById("loader");
+const petals = document.getElementById("petals");
 
-let moves = 0;
+let moveCount = 0;
 
-// Keep the No button next to Yes initially
-function resetNoButton() {
+/* ===========================
+        LOADER
+=========================== */
 
-    noBtn.style.position = "relative";
-    noBtn.style.left = "0px";
-    noBtn.style.top = "0px";
+window.addEventListener("load", () => {
 
-}
+    setTimeout(() => {
 
-resetNoButton();
+        loader.classList.add("hide");
 
-function moveButton() {
+    }, 1500);
 
-    // Switch to absolute only after first interaction
+});
+
+/* ===========================
+      ESCAPING NO BUTTON
+=========================== */
+
+function moveNoButton() {
+
     if (noBtn.style.position !== "absolute") {
 
         const rect = noBtn.getBoundingClientRect();
@@ -32,41 +44,42 @@ function moveButton() {
     const maxX = window.innerWidth - noBtn.offsetWidth - padding;
     const maxY = window.innerHeight - noBtn.offsetHeight - padding;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
 
-    moves++;
+    moveCount++;
 
-    if (moves === 5) {
+    if (moveCount === 5) {
 
-        noBtn.textContent = "Are you sure? 🤍";
+        noBtn.innerHTML = "Are you sure? 🤍";
 
     }
 
-    if (moves === 10) {
+    if (moveCount === 10) {
 
-        noBtn.textContent = "Give it a chance 🌸";
+        noBtn.innerHTML = "Please? 🌸";
 
     }
 
 }
 
-// Desktop
-noBtn.addEventListener("mouseenter", moveButton);
+noBtn.addEventListener("mouseenter", moveNoButton);
 
-// Mobile
 noBtn.addEventListener("touchstart", (e) => {
 
     e.preventDefault();
 
-    moveButton();
+    moveNoButton();
 
 });
 
-// Smooth transition to bouquet
+/* ===========================
+      OPEN BOUQUET
+=========================== */
+
 yesBtn.addEventListener("click", () => {
 
     document.body.classList.add("fade-out");
@@ -78,3 +91,70 @@ yesBtn.addEventListener("click", () => {
     }, 500);
 
 });
+
+/* ===========================
+      FLOATING PETALS
+=========================== */
+
+function createPetal() {
+
+    const petal = document.createElement("div");
+
+    petal.innerHTML = "🌸";
+
+    petal.style.position = "absolute";
+
+    petal.style.left = Math.random() * 100 + "vw";
+
+    petal.style.top = "-40px";
+
+    petal.style.fontSize = (14 + Math.random() * 12) + "px";
+
+    petal.style.opacity = 0.3 + Math.random() * 0.6;
+
+    petal.style.pointerEvents = "none";
+
+    petal.style.animation =
+        `fall ${8 + Math.random() * 5}s linear forwards`;
+
+    petals.appendChild(petal);
+
+    setTimeout(() => {
+
+        petal.remove();
+
+    }, 13000);
+
+}
+
+setInterval(createPetal, 800);
+
+/* ===========================
+      PETAL ANIMATION
+=========================== */
+
+const style = document.createElement("style");
+
+style.innerHTML = `
+@keyframes fall{
+
+0%{
+
+transform:
+translateY(-50px)
+rotate(0deg);
+
+}
+
+100%{
+
+transform:
+translateY(110vh)
+rotate(360deg);
+
+}
+
+}
+`;
+
+document.head.appendChild(style);
