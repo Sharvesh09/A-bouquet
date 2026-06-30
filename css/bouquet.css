@@ -1,372 +1,82 @@
-/* ===============================
-        EVERBLOOM BOUQUET
-================================ */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-
-    --white:#ffffff;
-    --lavender:#e9dcff;
-    --blue:#edf6ff;
-    --text:#555;
-
-}
-
-body{
-
-    font-family:"Poppins",sans-serif;
-
-    overflow:hidden;
-
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:
-    linear-gradient(
-        135deg,
-        #ffffff,
-        #f7f3ff,
-        #eef7ff
-    );
-
-}
-
-/* Background */
-
-.background{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:-3;
-
-    background:
-
-    radial-gradient(circle at top left,
-    rgba(219,198,255,.45),
-    transparent 35%),
-
-    radial-gradient(circle at bottom right,
-    rgba(180,225,255,.35),
-    transparent 40%);
-
-    filter:blur(80px);
-
-}
-
-.glow{
-
-    position:absolute;
-
-    width:350px;
-    height:350px;
-
-    border-radius:50%;
-
-    filter:blur(120px);
-
-    opacity:.45;
-
-}
-
-.glow-left{
-
-    background:#dccdff;
-
-    left:-80px;
-    top:-80px;
-
-}
-
-.glow-right{
-
-    background:#d8edff;
-
-    right:-100px;
-    bottom:-100px;
-
-}
-
-/* Main */
-
-.container{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-/* Bouquet */
+/* ===========================
+      HERO BOUQUET
+=========================== */
 
 .bouquet-section{
 
-    animation:bloom 1.5s ease;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    animation:bouquetEnter 1.8s ease;
 
 }
 
-.bouquet{
+#bouquetImage{
 
-    position:relative;
-
-    width:560px;
-
-    height:720px;
-
-}
-
-/* ===============================
-        FLOWERS
-================================ */
-
-.flower{
-
-    position:absolute;
+    width:430px;
 
     user-select:none;
 
     pointer-events:none;
 
-    transition:.35s;
+    filter:
+    drop-shadow(0 30px 60px rgba(0,0,0,.12));
+
+    animation:
+    floatBouquet 5s ease-in-out infinite;
 
 }
 
-.flower:hover{
+/* Letter Button */
 
-    transform:scale(1.05);
-
-}
-
-/* Lily */
-
-.lily{
-
-    width:170px;
-
-    left:190px;
-
-    top:10px;
-
-    z-index:10;
-
-}
-
-/* Tulips */
-
-.tulip1{
-
-    width:145px;
-
-    left:80px;
-
-    top:120px;
-
-    z-index:8;
-
-}
-
-.tulip2{
-
-    width:145px;
-
-    right:80px;
-
-    top:120px;
-
-    transform:scaleX(-1);
-
-    z-index:8;
-
-}
-
-/* Lavender */
-
-.lavender{
-
-    width:120px;
-
-    left:120px;
-
-    top:240px;
-
-    z-index:7;
-
-}
-
-/* Hydrangea */
-
-.hydra{
-
-    width:165px;
-
-    right:80px;
-
-    top:220px;
-
-    z-index:7;
-
-}
-
-/* Baby Breath */
-
-.babybreath{
-
-    width:180px;
-
-    left:165px;
-
-    top:250px;
-
-    z-index:6;
-
-}
-
-/* Rose */
-
-.rose{
-
-    width:120px;
-
-    right:155px;
-
-    top:320px;
-
-    z-index:7;
-
-}
-
-/* Daisy */
-
-.daisy{
-
-    width:100px;
-
-    left:215px;
-
-    top:340px;
-
-    z-index:9;
-
-}
-
-/* ===============================
-        WRAPPER
-================================ */
-
-.wrapper{
-
-    position:absolute;
-
-    width:340px;
-
-    left:110px;
-
-    bottom:45px;
-
-    z-index:20;
-
-}
-
-/* ===============================
-        RIBBON
-================================ */
-
-.ribbon{
-
-    position:absolute;
-
-    width:120px;
-
-    left:220px;
-
-    bottom:55px;
-
-    z-index:21;
-
-}
-
-/* Button */
-
-#customizeBtn{
+#letterBtn{
 
     margin-top:35px;
 
-    width:250px;
-
-    height:55px;
-
     border:none;
 
-    border-radius:40px;
+    padding:16px 38px;
 
-    background:#b897ff;
+    border-radius:50px;
 
-    color:white;
+    background:white;
 
-    font-size:16px;
+    color:#666;
+
+    font-size:18px;
 
     cursor:pointer;
 
-    transition:.3s;
+    opacity:0;
 
-    box-shadow:0 15px 35px rgba(180,145,255,.35);
+    transform:translateY(20px);
 
-}
+    animation:
+    showLetter 1s ease forwards;
 
-#customizeBtn:hover{
+    animation-delay:1.8s;
 
-    transform:translateY(-4px);
-
-}
-
-/* Petals */
-
-#petals{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.08);
 
 }
 
-.petal{
+#letterBtn:hover{
 
-    position:absolute;
-
-    animation:fall linear infinite;
+    transform:translateY(-3px);
 
 }
 
-/* Animation */
-
-@keyframes bloom{
+@keyframes bouquetEnter{
 
     from{
 
         opacity:0;
 
         transform:
-        translateY(60px)
-        scale(.85);
+        scale(.5)
+        translateY(80px);
 
     }
 
@@ -375,112 +85,47 @@ body{
         opacity:1;
 
         transform:
-        translateY(0)
-        scale(1);
+        scale(1)
+        translateY(0);
 
     }
 
 }
 
-@keyframes fall{
+@keyframes floatBouquet{
 
-    from{
+    0%{
 
         transform:
-        translateY(-100px)
-        rotate(0deg);
+        translateY(0px);
 
     }
+
+    50%{
+
+        transform:
+        translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:
+        translateY(0px);
+
+    }
+
+}
+
+@keyframes showLetter{
 
     to{
 
+        opacity:1;
+
         transform:
-        translateY(120vh)
-        rotate(360deg);
+        translateY(0);
 
     }
-
-}
-
-/* Responsive */
-
-@media(max-width:768px){
-
-.bouquet{
-
-width:360px;
-height:560px;
-
-}
-
-.lily{
-
-width:110px;
-left:125px;
-
-}
-
-.tulip1{
-
-width:100px;
-left:30px;
-
-}
-
-.tulip2{
-
-width:100px;
-right:30px;
-
-}
-
-.lavender{
-
-width:85px;
-left:60px;
-
-}
-
-.hydra{
-
-width:110px;
-right:30px;
-
-}
-
-.babybreath{
-
-width:120px;
-left:110px;
-
-}
-
-.rose{
-
-width:90px;
-right:95px;
-
-}
-
-.daisy{
-
-width:70px;
-left:150px;
-
-}
-
-.wrapper{
-
-width:240px;
-left:60px;
-
-}
-
-.ribbon{
-
-width:90px;
-left:135px;
-
-}
 
 }
