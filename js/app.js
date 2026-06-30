@@ -26,55 +26,32 @@ window.addEventListener("load", () => {
 /* ===========================
       ESCAPING NO BUTTON
 =========================== */
-
 function moveNoButton() {
 
-    if (noBtn.style.position !== "absolute") {
-
-        const rect = noBtn.getBoundingClientRect();
-
-        noBtn.style.position = "absolute";
-        noBtn.style.left = rect.left + "px";
-        noBtn.style.top = rect.top + "px";
-
-    }
+    noBtn.style.position = "fixed";
 
     const padding = 20;
 
     const maxX = window.innerWidth - noBtn.offsetWidth - padding;
     const maxY = window.innerHeight - noBtn.offsetHeight - padding;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
 
     moveCount++;
 
     if (moveCount === 5) {
-
-        noBtn.innerHTML = "Are you sure? 🤍";
-
+        noBtn.textContent = "Are you sure? 🤍";
     }
 
     if (moveCount === 10) {
-
-        noBtn.innerHTML = "Please? 🌸";
-
+        noBtn.textContent = "Please? 🌸";
     }
 
 }
-
-noBtn.addEventListener("mouseenter", moveNoButton);
-
-noBtn.addEventListener("touchstart", (e) => {
-
-    e.preventDefault();
-
-    moveNoButton();
-
-});
 
 /* ===========================
       OPEN BOUQUET
