@@ -1,42 +1,239 @@
-/* ===========================
-      HERO BOUQUET
-=========================== */
+/* ==========================================
+   EVERBLOOM - BOUQUET PAGE
+   Part 1 - Foundation
+========================================== */
 
-.bouquet-section{
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --white:#ffffff;
+    --lavender:#f4efff;
+    --lavender-dark:#b8a4e3;
+    --blue:#edf6ff;
+    --text:#555555;
+
+}
+
+html,body{
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    animation:bouquetEnter 1.8s ease;
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f8f4ff 55%,
+        #edf6ff 100%
+    );
+
+    position:relative;
 
 }
 
-#bouquetImage{
+/* =====================
+   Background
+===================== */
 
-    width:430px;
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-5;
+
+}
+
+.blob{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.55;
+
+}
+
+.blob1{
+
+    width:420px;
+    height:420px;
+
+    background:#d9c7ff;
+
+    left:-120px;
+    top:-120px;
+
+}
+
+.blob2{
+
+    width:420px;
+    height:420px;
+
+    background:#d7ebff;
+
+    right:-120px;
+    bottom:-120px;
+
+}
+
+/* =====================
+   Sparkles
+===================== */
+
+.sparkles{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+.sparkles span{
+
+    position:absolute;
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+
+    0 0 12px white,
+
+    0 0 28px #cbb6ff;
+
+}
+
+.sparkles span:nth-child(1){
+
+left:12%;
+top:20%;
+
+}
+
+.sparkles span:nth-child(2){
+
+left:82%;
+top:25%;
+
+}
+
+.sparkles span:nth-child(3){
+
+left:20%;
+top:75%;
+
+}
+
+.sparkles span:nth-child(4){
+
+left:88%;
+top:70%;
+
+}
+
+.sparkles span:nth-child(5){
+
+left:55%;
+top:12%;
+
+}
+
+.sparkles span:nth-child(6){
+
+left:68%;
+top:82%;
+
+}
+
+/* =====================
+   Hero
+===================== */
+
+.hero{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* =====================
+   Bouquet
+===================== */
+
+.bouquetContainer{
+
+    width:520px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#bouquet{
+
+    width:420px;
 
     user-select:none;
 
     pointer-events:none;
 
     filter:
-    drop-shadow(0 30px 60px rgba(0,0,0,.12));
 
-    animation:
-    floatBouquet 5s ease-in-out infinite;
+    drop-shadow(
+    0 30px 50px rgba(0,0,0,.12));
 
 }
 
-/* Letter Button */
+/* =====================
+   Button
+===================== */
 
 #letterBtn{
 
-    margin-top:35px;
+    margin-top:40px;
+
+    padding:
+
+    16px 42px;
 
     border:none;
-
-    padding:16px 38px;
 
     border-radius:50px;
 
@@ -46,49 +243,109 @@
 
     font-size:18px;
 
+    font-weight:500;
+
     cursor:pointer;
 
-    opacity:0;
-
-    transform:translateY(20px);
-
-    animation:
-    showLetter 1s ease forwards;
-
-    animation-delay:1.8s;
-
     box-shadow:
-    0 15px 40px rgba(0,0,0,.08);
+
+    0 18px 45px rgba(0,0,0,.08);
+
+    transition:.35s;
 
 }
 
 #letterBtn:hover{
 
-    transform:translateY(-3px);
+    transform:
+
+    translateY(-4px);
 
 }
 
-@keyframes bouquetEnter{
+/* =====================
+   Mobile
+===================== */
 
-    from{
+@media(max-width:768px){
+
+.bouquetContainer{
+
+width:100%;
+
+}
+
+#bouquet{
+
+width:290px;
+
+}
+
+#letterBtn{
+
+font-size:16px;
+
+padding:14px 28px;
+
+}
+
+}
+/* ==========================================
+   EVERBLOOM - Part 2
+   Animations + Letter
+========================================== */
+
+/* ------------------------
+   Bouquet Entrance
+------------------------- */
+
+.hero{
+
+    animation:heroEnter 1.8s ease forwards;
+
+}
+
+@keyframes heroEnter{
+
+    0%{
 
         opacity:0;
 
         transform:
-        scale(.5)
-        translateY(80px);
+        translateY(80px)
+        scale(.8);
 
     }
 
-    to{
+    70%{
 
         opacity:1;
 
         transform:
-        scale(1)
-        translateY(0);
+        translateY(-8px)
+        scale(1.03);
 
     }
+
+    100%{
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+}
+
+/* ------------------------
+   Floating Bouquet
+------------------------- */
+
+#bouquet{
+
+    animation:
+
+    floatBouquet 6s ease-in-out infinite;
 
 }
 
@@ -104,7 +361,7 @@
     50%{
 
         transform:
-        translateY(-10px);
+        translateY(-12px);
 
     }
 
@@ -117,23 +374,78 @@
 
 }
 
-@keyframes showLetter{
+/* ------------------------
+   Sparkles
+------------------------- */
 
-    to{
+.sparkles span{
 
-        opacity:1;
+    animation:
 
-        transform:
-        translateY(0);
-
-    }
+    sparkle 5s ease-in-out infinite;
 
 }
-/* ===============================
-          LETTER
-================================ */
 
-#letterOverlay{
+.sparkles span:nth-child(2){
+
+animation-delay:1s;
+
+}
+
+.sparkles span:nth-child(3){
+
+animation-delay:2s;
+
+}
+
+.sparkles span:nth-child(4){
+
+animation-delay:3s;
+
+}
+
+.sparkles span:nth-child(5){
+
+animation-delay:4s;
+
+}
+
+.sparkles span:nth-child(6){
+
+animation-delay:5s;
+
+}
+
+@keyframes sparkle{
+
+0%{
+
+opacity:0;
+transform:scale(.2);
+
+}
+
+50%{
+
+opacity:1;
+transform:scale(1.3);
+
+}
+
+100%{
+
+opacity:0;
+transform:scale(.2);
+
+}
+
+}
+
+/* ------------------------
+   Letter Overlay
+------------------------- */
+
+#overlay{
 
     position:fixed;
 
@@ -155,11 +467,11 @@
 
     transition:.4s;
 
-    z-index:999;
+    z-index:1000;
 
 }
 
-#letterOverlay.show{
+#overlay.show{
 
     opacity:1;
 
@@ -167,72 +479,83 @@
 
 }
 
-.letter{
+/* ------------------------
+   Letter
+------------------------- */
 
-    width:650px;
+#letter{
+
+    width:680px;
 
     max-width:90%;
 
-    background:#fffdf8;
+    background:#fffdf7;
 
-    border-radius:25px;
+    border-radius:28px;
 
-    padding:50px;
+    padding:55px;
 
-    box-shadow:
-    0 30px 70px rgba(0,0,0,.15);
+    position:relative;
 
     transform:translateY(80px);
 
     transition:.45s;
 
-    position:relative;
+    box-shadow:
+
+    0 30px 80px rgba(0,0,0,.12);
 
 }
 
-#letterOverlay.show .letter{
+#overlay.show #letter{
 
     transform:translateY(0);
 
 }
 
-.letter h1{
+#letter h1{
 
     font-family:"Cormorant Garamond",serif;
 
-    font-size:52px;
+    text-align:center;
 
-    margin-bottom:30px;
+    font-size:58px;
 
     color:#555;
+
+    margin-bottom:35px;
+
+}
+
+.content{
+
+    font-size:19px;
+
+    line-height:2;
+
+    color:#666;
 
     text-align:center;
 
 }
 
-.letterContent{
+.content h2{
 
-    line-height:2;
-
-    font-size:18px;
-
-    color:#666;
-
-}
-
-.signature{
-
-    margin-top:45px;
-
-    text-align:right;
-
-    font-size:26px;
+    margin-top:40px;
 
     font-family:"Cormorant Garamond",serif;
 
+    font-size:34px;
+
+    font-weight:600;
+
 }
 
-#closeLetter{
+/* ------------------------
+   Close Button
+------------------------- */
+
+#close{
 
     position:absolute;
 
@@ -247,5 +570,53 @@
     font-size:26px;
 
     cursor:pointer;
+
+    color:#777;
+
+    transition:.3s;
+
+}
+
+#close:hover{
+
+    transform:rotate(90deg);
+
+}
+
+/* ------------------------
+   Letter Button Animation
+------------------------- */
+
+#letterBtn{
+
+    opacity:0;
+
+    animation:
+
+    buttonAppear .8s ease forwards;
+
+    animation-delay:1.3s;
+
+}
+
+@keyframes buttonAppear{
+
+from{
+
+opacity:0;
+
+transform:
+translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
 
 }
