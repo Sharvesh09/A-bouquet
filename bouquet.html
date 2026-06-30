@@ -6,24 +6,28 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+          content="width=device-width, initial-scale=1.0">
 
     <title>EverBloom • Bouquet</title>
 
-    <!-- Google Fonts -->
+    <link rel="icon"
+          type="image/png"
+          href="assets/bouquet.png">
+
+    <!-- Fonts -->
 
     <link rel="preconnect"
-        href="https://fonts.googleapis.com">
+          href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <link rel="stylesheet"
-        href="css/bouquet.css">
+          href="css/bouquet.css">
 
 </head>
 
@@ -33,8 +37,13 @@
 
     <div class="background"></div>
 
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
+    <div class="glow glow-left"></div>
+
+    <div class="glow glow-right"></div>
+
+    <!-- Floating Petals -->
+
+    <div id="petals"></div>
 
     <!-- Sparkles -->
 
@@ -49,20 +58,16 @@
 
     </div>
 
-    <!-- Floating Petals -->
-
-    <div id="petals"></div>
-
-    <!-- Bouquet -->
+    <!-- Main -->
 
     <main class="hero">
 
-        <div class="bouquetContainer">
+        <div class="bouquet-container">
 
             <img
+                id="bouquet"
                 src="assets/bouquet.png"
-                alt="Bouquet"
-                id="bouquet">
+                alt="Bouquet">
 
         </div>
 
@@ -92,7 +97,7 @@
 
             </h1>
 
-            <div class="content">
+            <div class="letter-text">
 
                 <p>
 
@@ -118,11 +123,11 @@
 
                 <br><br>
 
-                <h2>
+                <div class="signature">
 
                     — Sharvesh 
 
-                </h2>
+                </div>
 
             </div>
 
