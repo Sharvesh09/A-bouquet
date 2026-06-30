@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Virtual Bouquet</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="css/bouquet.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div id="petals"></div>
+
+<div class="bouquet-container">
+
+<img
+class="bouquet"
+src="assets/bouquet.png"
+alt="Bouquet">
+
+<button id="customize">
+
+Customize Bouquet
+
+</button>
+
+</div>
+
+<script src="js/bouquet.js"></script>
+
+</body>
+
+</html>
