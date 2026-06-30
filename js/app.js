@@ -11,14 +11,27 @@ const petals = document.getElementById("petals");
 /* ==========================
         LOADER
 ========================== */
+/* ==========================
+        LOADER
+========================== */
 
-window.addEventListener("load", () => {
+function hideLoader() {
 
     setTimeout(() => {
 
         loader.classList.add("hide");
 
     }, 1200);
+
+}
+
+window.addEventListener("load", hideLoader);
+
+window.addEventListener("pageshow", function () {
+
+    loader.classList.remove("hide");
+
+    hideLoader();
 
 });
 
