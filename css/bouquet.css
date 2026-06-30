@@ -1,7 +1,8 @@
-/* ==========================================
-   EVERBLOOM - BOUQUET PAGE
-   Part 1 - Foundation
-========================================== */
+/* ===================================================
+   EVERBLOOM
+   bouquet.css
+   PART 1
+=================================================== */
 
 *{
     margin:0;
@@ -12,56 +13,72 @@
 :root{
 
     --white:#ffffff;
-    --lavender:#f4efff;
-    --lavender-dark:#b8a4e3;
-    --blue:#edf6ff;
-    --text:#555555;
+    --lavender:#f8f3ff;
+    --blue:#eef7ff;
+    --text:#555;
+    --shadow:0 20px 50px rgba(0,0,0,.12);
 
 }
 
-html,body{
+html,
+body{
 
     width:100%;
     height:100%;
-    overflow:hidden;
 
 }
 
 body{
 
+    overflow:hidden;
+
     font-family:'Poppins',sans-serif;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
+    position:relative;
 
     background:
     linear-gradient(
         135deg,
-        #ffffff 0%,
-        #f8f4ff 55%,
-        #edf6ff 100%
+        #ffffff,
+        #f8f4ff,
+        #eef8ff
     );
-
-    position:relative;
 
 }
 
-/* =====================
-   Background
-===================== */
+/* ===========================
+        Background
+=========================== */
 
 .background{
 
-    position:fixed;
+    position:absolute;
 
     inset:0;
+
+    background:
+
+    radial-gradient(circle at top left,
+    rgba(218,201,255,.55),
+    transparent 35%),
+
+    radial-gradient(circle at bottom right,
+    rgba(194,225,255,.45),
+    transparent 35%);
+
+    filter:blur(70px);
 
     z-index:-5;
 
 }
 
-.blob{
+.glow{
 
     position:absolute;
 
@@ -73,108 +90,37 @@ body{
 
 }
 
-.blob1{
+.glow-left{
 
-    width:420px;
-    height:420px;
+    width:340px;
 
-    background:#d9c7ff;
+    height:340px;
 
-    left:-120px;
-    top:-120px;
+    background:#d6c4ff;
+
+    left:-100px;
+
+    top:-100px;
 
 }
 
-.blob2{
+.glow-right{
 
-    width:420px;
-    height:420px;
+    width:380px;
 
-    background:#d7ebff;
+    height:380px;
+
+    background:#d5ecff;
 
     right:-120px;
+
     bottom:-120px;
 
 }
 
-/* =====================
-   Sparkles
-===================== */
-
-.sparkles{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-}
-
-.sparkles span{
-
-    position:absolute;
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:white;
-
-    box-shadow:
-
-    0 0 12px white,
-
-    0 0 28px #cbb6ff;
-
-}
-
-.sparkles span:nth-child(1){
-
-left:12%;
-top:20%;
-
-}
-
-.sparkles span:nth-child(2){
-
-left:82%;
-top:25%;
-
-}
-
-.sparkles span:nth-child(3){
-
-left:20%;
-top:75%;
-
-}
-
-.sparkles span:nth-child(4){
-
-left:88%;
-top:70%;
-
-}
-
-.sparkles span:nth-child(5){
-
-left:55%;
-top:12%;
-
-}
-
-.sparkles span:nth-child(6){
-
-left:68%;
-top:82%;
-
-}
-
-/* =====================
-   Hero
-===================== */
+/* ===========================
+          Hero
+=========================== */
 
 .hero{
 
@@ -188,15 +134,17 @@ top:82%;
 
     align-items:center;
 
+    animation:heroFade 1.5s ease;
+
 }
 
-/* =====================
-   Bouquet
-===================== */
+/* ===========================
+        Bouquet
+=========================== */
 
-.bouquetContainer{
+.bouquet-container{
 
-    width:520px;
+    width:420px;
 
     display:flex;
 
@@ -208,7 +156,7 @@ top:82%;
 
 #bouquet{
 
-    width:420px;
+    width:340px;
 
     user-select:none;
 
@@ -216,40 +164,37 @@ top:82%;
 
     filter:
 
-    drop-shadow(
-    0 30px 50px rgba(0,0,0,.12));
+    drop-shadow(0 30px 55px rgba(0,0,0,.12));
 
 }
 
-/* =====================
-   Button
-===================== */
+/* ===========================
+      Read Letter Button
+=========================== */
 
 #letterBtn{
 
-    margin-top:40px;
+    margin-top:35px;
 
-    padding:
+    width:240px;
 
-    16px 42px;
+    height:56px;
 
     border:none;
 
     border-radius:50px;
 
+    cursor:pointer;
+
     background:white;
 
     color:#666;
 
-    font-size:18px;
+    font-size:17px;
 
-    font-weight:500;
+    font-family:'Poppins',sans-serif;
 
-    cursor:pointer;
-
-    box-shadow:
-
-    0 18px 45px rgba(0,0,0,.08);
+    box-shadow:var(--shadow);
 
     transition:.35s;
 
@@ -257,95 +202,156 @@ top:82%;
 
 #letterBtn:hover{
 
-    transform:
+    transform:translateY(-4px);
 
-    translateY(-4px);
+    box-shadow:
 
-}
-
-/* =====================
-   Mobile
-===================== */
-
-@media(max-width:768px){
-
-.bouquetContainer{
-
-width:100%;
+    0 25px 55px rgba(0,0,0,.15);
 
 }
 
-#bouquet{
+/* ===========================
+        Sparkles
+=========================== */
 
-width:290px;
+.sparkles{
 
-}
+    position:fixed;
 
-#letterBtn{
+    inset:0;
 
-font-size:16px;
+    pointer-events:none;
 
-padding:14px 28px;
-
-}
-
-}
-/* ==========================================
-   EVERBLOOM - Part 2
-   Animations + Letter
-========================================== */
-
-/* ------------------------
-   Bouquet Entrance
-------------------------- */
-
-.hero{
-
-    animation:heroEnter 1.8s ease forwards;
+    overflow:hidden;
 
 }
 
-@keyframes heroEnter{
+.sparkles span{
 
-    0%{
+    position:absolute;
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+
+    0 0 18px white,
+
+    0 0 35px #cdb8ff;
+
+}
+
+.sparkles span:nth-child(1){
+
+left:10%;
+top:20%;
+
+}
+
+.sparkles span:nth-child(2){
+
+left:82%;
+top:18%;
+
+}
+
+.sparkles span:nth-child(3){
+
+left:18%;
+top:78%;
+
+}
+
+.sparkles span:nth-child(4){
+
+left:86%;
+top:72%;
+
+}
+
+.sparkles span:nth-child(5){
+
+left:50%;
+top:12%;
+
+}
+
+.sparkles span:nth-child(6){
+
+left:62%;
+top:82%;
+
+}
+
+/* ===========================
+        Petals
+=========================== */
+
+#petals{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+.petal{
+
+    position:absolute;
+
+    top:-40px;
+
+}
+
+/* ===========================
+        Animations
+=========================== */
+
+@keyframes heroFade{
+
+    from{
 
         opacity:0;
 
         transform:
-        translateY(80px)
-        scale(.8);
+
+        translateY(50px);
 
     }
 
-    70%{
+    to{
 
         opacity:1;
 
         transform:
-        translateY(-8px)
-        scale(1.03);
 
-    }
-
-    100%{
-
-        transform:
-        translateY(0)
-        scale(1);
+        translateY(0);
 
     }
 
 }
+/* ===================================================
+   EVERBLOOM
+   bouquet.css
+   PART 2
+=================================================== */
 
-/* ------------------------
-   Floating Bouquet
-------------------------- */
+/* ===========================
+      Floating Bouquet
+=========================== */
 
 #bouquet{
 
-    animation:
-
-    floatBouquet 6s ease-in-out infinite;
+    animation:floatBouquet 6s ease-in-out infinite;
 
 }
 
@@ -353,97 +359,95 @@ padding:14px 28px;
 
     0%{
 
-        transform:
-        translateY(0px);
+        transform:translateY(0);
 
     }
 
     50%{
 
-        transform:
-        translateY(-12px);
+        transform:translateY(-12px);
 
     }
 
     100%{
 
-        transform:
-        translateY(0px);
+        transform:translateY(0);
 
     }
 
 }
 
-/* ------------------------
-   Sparkles
-------------------------- */
+/* ===========================
+      Sparkle Animation
+=========================== */
 
 .sparkles span{
 
-    animation:
-
-    sparkle 5s ease-in-out infinite;
+    animation:sparkle 5s ease-in-out infinite;
 
 }
 
 .sparkles span:nth-child(2){
 
-animation-delay:1s;
+    animation-delay:1s;
 
 }
 
 .sparkles span:nth-child(3){
 
-animation-delay:2s;
+    animation-delay:2s;
 
 }
 
 .sparkles span:nth-child(4){
 
-animation-delay:3s;
+    animation-delay:3s;
 
 }
 
 .sparkles span:nth-child(5){
 
-animation-delay:4s;
+    animation-delay:4s;
 
 }
 
 .sparkles span:nth-child(6){
 
-animation-delay:5s;
+    animation-delay:5s;
 
 }
 
 @keyframes sparkle{
 
-0%{
+    0%{
 
-opacity:0;
-transform:scale(.2);
+        opacity:0;
+
+        transform:scale(.3);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.2);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:scale(.3);
+
+    }
 
 }
 
-50%{
-
-opacity:1;
-transform:scale(1.3);
-
-}
-
-100%{
-
-opacity:0;
-transform:scale(.2);
-
-}
-
-}
-
-/* ------------------------
-   Letter Overlay
-------------------------- */
+/* ===========================
+      Letter Overlay
+=========================== */
 
 #overlay{
 
@@ -467,7 +471,7 @@ transform:scale(.2);
 
     transition:.4s;
 
-    z-index:1000;
+    z-index:999;
 
 }
 
@@ -479,17 +483,17 @@ transform:scale(.2);
 
 }
 
-/* ------------------------
-   Letter
-------------------------- */
+/* ===========================
+      Letter Card
+=========================== */
 
 #letter{
 
-    width:680px;
+    width:650px;
 
     max-width:90%;
 
-    background:#fffdf7;
+    background:#fffdf8;
 
     border-radius:28px;
 
@@ -497,9 +501,9 @@ transform:scale(.2);
 
     position:relative;
 
-    transform:translateY(80px);
+    transform:translateY(60px);
 
-    transition:.45s;
+    transition:.45s ease;
 
     box-shadow:
 
@@ -515,59 +519,57 @@ transform:scale(.2);
 
 #letter h1{
 
-    font-family:"Cormorant Garamond",serif;
+    font-family:'Cormorant Garamond',serif;
 
-    text-align:center;
-
-    font-size:58px;
+    font-size:52px;
 
     color:#555;
+
+    text-align:center;
 
     margin-bottom:35px;
 
 }
 
-.content{
-
-    font-size:19px;
-
-    line-height:2;
-
-    color:#666;
+.letter-text{
 
     text-align:center;
 
-}
+    line-height:2;
 
-.content h2{
+    font-size:18px;
 
-    margin-top:40px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:34px;
-
-    font-weight:600;
+    color:#666;
 
 }
 
-/* ------------------------
-   Close Button
-------------------------- */
+.signature{
+
+    margin-top:45px;
+
+    font-size:28px;
+
+    font-family:'Cormorant Garamond',serif;
+
+}
+
+/* ===========================
+      Close Button
+=========================== */
 
 #close{
 
     position:absolute;
 
-    top:20px;
+    top:18px;
 
-    right:25px;
-
-    border:none;
+    right:22px;
 
     background:none;
 
-    font-size:26px;
+    border:none;
+
+    font-size:28px;
 
     cursor:pointer;
 
@@ -583,39 +585,97 @@ transform:scale(.2);
 
 }
 
-/* ------------------------
-   Letter Button Animation
-------------------------- */
+/* ===========================
+      Falling Petals
+=========================== */
+
+@keyframes fall{
+
+    from{
+
+        transform:
+        translateY(-60px)
+        rotate(0deg);
+
+    }
+
+    to{
+
+        transform:
+        translateY(110vh)
+        rotate(360deg);
+
+    }
+
+}
+
+/* ===========================
+      Mobile
+=========================== */
+
+@media(max-width:768px){
+
+.bouquet-container{
+
+width:100%;
+
+}
+
+#bouquet{
+
+width:250px;
+
+}
 
 #letterBtn{
 
-    opacity:0;
+width:220px;
 
-    animation:
+height:52px;
 
-    buttonAppear .8s ease forwards;
+font-size:15px;
 
-    animation-delay:1.3s;
-
-}
-
-@keyframes buttonAppear{
-
-from{
-
-opacity:0;
-
-transform:
-translateY(20px);
+margin-top:25px;
 
 }
 
-to{
+#letter{
 
-opacity:1;
+padding:35px 25px;
 
-transform:
-translateY(0);
+}
+
+#letter h1{
+
+font-size:38px;
+
+}
+
+.letter-text{
+
+font-size:16px;
+
+line-height:1.8;
+
+}
+
+.signature{
+
+font-size:24px;
+
+}
+
+.glow-left{
+
+width:220px;
+height:220px;
+
+}
+
+.glow-right{
+
+width:240px;
+height:240px;
 
 }
 
