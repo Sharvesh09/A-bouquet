@@ -129,3 +129,123 @@
     }
 
 }
+/* ===============================
+          LETTER
+================================ */
+
+#letterOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.45);
+
+    backdrop-filter:blur(12px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.4s;
+
+    z-index:999;
+
+}
+
+#letterOverlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.letter{
+
+    width:650px;
+
+    max-width:90%;
+
+    background:#fffdf8;
+
+    border-radius:25px;
+
+    padding:50px;
+
+    box-shadow:
+    0 30px 70px rgba(0,0,0,.15);
+
+    transform:translateY(80px);
+
+    transition:.45s;
+
+    position:relative;
+
+}
+
+#letterOverlay.show .letter{
+
+    transform:translateY(0);
+
+}
+
+.letter h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:52px;
+
+    margin-bottom:30px;
+
+    color:#555;
+
+    text-align:center;
+
+}
+
+.letterContent{
+
+    line-height:2;
+
+    font-size:18px;
+
+    color:#666;
+
+}
+
+.signature{
+
+    margin-top:45px;
+
+    text-align:right;
+
+    font-size:26px;
+
+    font-family:"Cormorant Garamond",serif;
+
+}
+
+#closeLetter{
+
+    position:absolute;
+
+    top:20px;
+
+    right:25px;
+
+    border:none;
+
+    background:none;
+
+    font-size:26px;
+
+    cursor:pointer;
+
+}
